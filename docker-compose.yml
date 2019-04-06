@@ -7,13 +7,26 @@ services:
       - "15432:5432"
     environment:
       - "DB_HOST=${DB_HOST}"
-      - "DB_USERNAME=${DB_USERNAME}" 
+      - "DB_USERNAME=${DB_USERNAME}"
+    volumes:
+      - db-data:/var/lib/postgresql/data
   web:
     env_file: ./.env
     build: .
+    volumes:
+      - .:/pop-books
+      - tmp-data:/pop-books/tmp
+      - public-data:/pop-books/public
     ports:
       - "3000:3000"
     environment:
       - "RAILS_ENV=${RAILS_ENV}"
     depends_on:
       - db
+volumes:
+  db-data:
+    external: true
+  tmp-data:
+    external: true
+  public-data:
+    external: true
