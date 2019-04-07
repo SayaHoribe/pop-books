@@ -1,6 +1,9 @@
 # pop-books
 
 ## Setup
+- [Docker for Mac](https://hub.docker.com/editions/community/docker-ce-desktop-mac) Download
+- App Start
+
 ```
 docker volume create --name=db-data
 docker volume create --name=tmp-data
